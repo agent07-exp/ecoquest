@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EcoQuest | Missions</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <aside class="sidebar">
+        <div class="logo">
+            <div class="logo-icon">🌱</div>
+            <div>
+                <h2>EcoQuest</h2><span>Learn • Play • Protect</span>
+            </div>
+        </div>
+        <nav>
+            <a href="index.html"><i class="fa-solid fa-house"></i> Dashboard</a>
+            <a class="active" href="missions.html"><i class="fa-solid fa-bullseye"></i> Missions</a>
+            <a href="leader.html"><i class="fa-solid fa-ranking-star"></i> Leaderboard</a>
+            <a href="index.html#badges"><i class="fa-solid fa-medal"></i> Badges</a>
+            <a href="activities.html"><i class="fa-solid fa-leaf"></i> Activities</a>
+            <a href="reward.html"><i class="fa-solid fa-gift"></i> Rewards</a>
+        </nav>
+        <div class="sidebar-bottom">
+            <div class="eco-tip"><i class="fa-solid fa-lightbulb"></i><strong>Eco Tip</strong>
+                <p>Switch off lights when leaving a classroom.</p>
+            </div>
+            <button class="logout"><i class="fa-solid fa-right-from-bracket"></i> Logout</button>
+        </div>
+    </aside>
+
+    <main class="main">
+        <header class="topbar">
+            <button class="menu-btn" onclick="toggleSidebar()"><i class="fa-solid fa-bars"></i></button>
+            <div class="search"><i class="fa-solid fa-magnifying-glass"></i><input type="text" id="missionSearch"
+                    placeholder="Search missions..."></div>
+            <div class="top-actions">
+                <button class="notification"><i class="fa-regular fa-bell"></i><span>3</span></button>
+                <div class="profile">
+                    <div class="avatar" id="userAvatar">--</div>
+                    <div><strong id="userName">Loading...</strong><small id="userLevel">Eco Explorer</small></div>
+                    <i class="fa-solid fa-chevron-down"></i>
+                </div>
+            </div>
+        </header>
+
+        <section class="page-hero">
+            <div>
+                <p class="small-title">ECO CHALLENGES</p>
+                <h1>Your Missions</h1>
+                <p class="welcome-text">Take action, document your work and earn EcoPoints.</p>
+            </div>
+            <div class="mission-hero-icon">🎯</div>
+        </section>
+
+        <section class="missions-page" id="missions">
+            <div class="section-heading">
+                <div>
+                    <p class="section-label">ACTIVE CHALLENGES</p>
+                    <h2>Choose a mission</h2>
+                </div>
+                <button class="view-btn" id="viewAllMissionsBtn">
+                    View all <i class="fa-solid fa-arrow-right"></i>
+                </button>
+            </div>
+        </section>
+
+        <!-- MISSION DETAILS -->
+        <section class="mission-details-section" id="missionDetails" hidden>
+
+            <button class="back-to-missions" onclick="closeMission()">
+                <i class="fa-solid fa-arrow-left"></i>
+                Back to Missions
+            </button>
+
+            <div class="mission-details-card">
+
+                <div class="mission-details-top">
+
+                    <div>
+                        <span class="mission-details-category" id="missionDetailsCategory">
+                            Environment
+                        </span>
+
+                        <h2 id="missionDetailsTitle">
+                            Mission Title
+                        </h2>
+
+                        <p id="missionDetailsDescription">
+                            Mission description
+                        </p>
+                    </div>
+
+                    <div class="mission-details-xp">
+                        <span>REWARD</span>
+                        <strong id="missionDetailsXP">150 XP</strong>
+                    </div>
+
+                </div>
+
+
+                <div class="mission-details-meta">
+
+                    <div class="details-meta-box">
+                        <i class="fa-solid fa-gauge-high"></i>
+                        <div>
+                            <small>Difficulty</small>
+                            <strong id="missionDetailsDifficulty">Easy</strong>
+                        </div>
+                    </div>
+
+                    <div class="details-meta-box">
+                        <i class="fa-solid fa-clock"></i>
+                        <div>
+                            <small>Deadline</small>
+                            <strong id="missionDetailsDeadline">2 days left</strong>
+                        </div>
+                    </div>
+
+                    <div class="details-meta-box">
+                        <i class="fa-solid fa-users"></i>
+                        <div>
+                            <small>People Engaged</small>
+                            <strong id="missionDetailsPeople">0</strong>
+                        </div>
+                    </div>
+
+                </div>
+
+
+                <div class="mission-start-area">
+
+                    <h3>Ready to take the challenge?</h3>
+
+                    <p>
+                        Start this mission when you're ready. Your progress
+                        will be tracked here.
+                    </p>
+
+                    <button class="mission-start-btn" onclick="beginMission()">
+                        <i class="fa-solid fa-play"></i>
+                        Start Mission
+                    </button>
+
+                </div>
+
+            </div>
+
+        </section>
+        <!-- ================= PROOF SECTION ================= -->
+        <section class="proof-section" id="proof" hidden>
+
+            <button class="back-to-missions" onclick="closeMission()">
+                <i class="fa-solid fa-arrow-left"></i>
+                Back to Mission
+            </button>
+
+            <div class="proof-card">
+
+                <div class="proof-header">
+                    <span class="mission-details-category">
+                        MISSION PROOF
+                    </span>
+
+                    <h2>Show what you accomplished</h2>
+
+                    <p>
+                        Complete the mission and provide proof of your work.
+                        Your photo stays on this device and is not uploaded to Firebase.
+                    </p>
+                </div>
+
+
+                <!-- PHOTO -->
+                <div class="upload-card">
+
+                    <div class="upload-icon">
+                        <i class="fa-solid fa-camera"></i>
+                    </div>
+
+                    <div class="upload-copy">
+                        <h3>Upload proof photo</h3>
+
+                        <p>
+                            Take or select a photo showing your completed mission.
+                        </p>
+                    </div>
+
+                    <label class="upload-btn" for="missionPhoto">
+                        <i class="fa-solid fa-cloud-arrow-up"></i>
+                        Choose Photo
+                    </label>
+
+                    <input id="missionPhoto" type="file" accept="image/*" hidden>
+
+                    <!-- PHOTO PREVIEW -->
+                    <div id="photoPreview" class="photo-preview" hidden>
+
+                        <img id="previewImage" src="" alt="Mission proof preview">
+
+                        <div class="photo-preview-info">
+
+                            <strong id="previewName">
+                                Selected photo
+                            </strong>
+
+                            <button type="button" id="removePhoto" class="remove-photo">
+                                <i class="fa-solid fa-trash"></i>
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- REFLECTION / QUIZ -->
+                <div class="mission-reflection">
+
+                    <div class="reflection-header">
+                        <i class="fa-solid fa-comments"></i>
+
+                        <div>
+                            <h3>Quick Reflection</h3>
+                            <p>Tell us about your experience.</p>
+                        </div>
+                    </div>
+
+
+                    <div class="reflection-question">
+
+                        <label for="missionExperience">
+                            How did completing this mission feel?
+                        </label>
+
+                        <select id="missionExperience">
+                            <option value="">
+                                Select an answer
+                            </option>
+
+                            <option value="easy">
+                                It was easy
+                            </option>
+
+                            <option value="moderate">
+                                It was a little challenging
+                            </option>
+
+                            <option value="hard">
+                                It was difficult
+                            </option>
+                        </select>
+
+                    </div>
+
+
+                    <div class="reflection-question">
+
+                        <label for="missionImpact">
+                            Did your action make a difference?
+                        </label>
+
+                        <select id="missionImpact">
+                            <option value="">
+                                Select an answer
+                            </option>
+
+                            <option value="yes">
+                                Yes, definitely
+                            </option>
+
+                            <option value="somewhat">
+                                Somewhat
+                            </option>
+
+                            <option value="not-sure">
+                                I'm not sure
+                            </option>
+                        </select>
+
+                    </div>
+
+
+                    <div class="reflection-question">
+
+                        <label for="missionPride">
+                            How proud are you of your contribution?
+                        </label>
+
+                        <select id="missionPride">
+                            <option value="">
+                                Select an answer
+                            </option>
+
+                            <option value="1">
+                                1 / 5
+                            </option>
+
+                            <option value="2">
+                                2 / 5
+                            </option>
+
+                            <option value="3">
+                                3 / 5
+                            </option>
+
+                            <option value="4">
+                                4 / 5
+                            </option>
+
+                            <option value="5">
+                                5 / 5
+                            </option>
+                        </select>
+
+                    </div>
+
+                </div>
+
+
+                <!-- COMPLETE BUTTON -->
+                <div class="proof-actions">
+
+                    <button type="button" class="mission-start-btn" id="firebaseCompleteMission">
+                        <i class="fa-solid fa-check"></i>
+                        Complete Mission
+                    </button>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <script type="module" src="script.js"></script>
+    <script type="module" src="missions.js"></script>
+</body>
+
+</html>

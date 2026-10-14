@@ -1,0 +1,154 @@
+/* ================================
+   REWARDS PAGE
+   (style.css provides the shared
+   reset, variables, sidebar, and
+   the reward card styles)
+================================ */
+
+.main-content {
+    margin-left: 255px;
+    min-height: 100vh;
+    padding: 35px;
+}
+
+.mobile-menu-btn {
+    display: none;
+    border: 1px solid var(--border);
+    background: white;
+    width: 42px;
+    height: 42px;
+    border-radius: 10px;
+    font-size: 17px;
+    color: var(--text);
+    cursor: pointer;
+    margin-bottom: 18px;
+}
+
+
+/* ================================
+   PAGE HEADER
+================================ */
+
+.page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.page-label {
+    color: var(--green);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    margin-bottom: 7px;
+}
+
+.page-header h1 {
+    font-size: 30px;
+    margin: 0;
+}
+
+.page-subtitle {
+    color: var(--muted);
+    margin-top: 8px;
+}
+
+.page-header .rewards-balance {
+    font-size: 15px;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+
+/* ================================
+   REWARDS GRID
+================================ */
+
+.rewards-section-page {
+    margin-bottom: 35px;
+}
+
+
+/* ================================
+   HOW IT WORKS
+================================ */
+
+.how-it-works {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.how-card {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 17px;
+    padding: 24px;
+    box-shadow: var(--shadow);
+}
+
+.how-icon {
+    width: 46px;
+    height: 46px;
+    border-radius: 13px;
+    background: var(--light-green);
+    color: var(--green);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 19px;
+    margin-bottom: 14px;
+}
+
+.how-card h3 {
+    font-size: 15px;
+    margin-bottom: 6px;
+}
+
+.how-card p {
+    color: var(--muted);
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+
+/* ================================
+   RESPONSIVE
+================================ */
+
+@media (max-width: 1100px) {
+    .rewards-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .how-it-works {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 800px) {
+
+    .mobile-menu-btn {
+        display: block;
+    }
+
+    .main-content {
+        margin-left: 0;
+        padding: 20px 18px;
+    }
+
+    .page-header {
+        align-items: flex-start;
+        gap: 16px;
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 550px) {
+    .rewards-grid {
+        grid-template-columns: 1fr;
+    }
+}

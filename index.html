@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>EcoQuest | Gamified Environment</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+
+        <div class="logo">
+            <div class="logo-icon">🌱</div>
+            <div>
+                <h2>EcoQuest</h2>
+                <span>Learn • Play • Protect</span>
+            </div>
+        </div>
+
+        <nav>
+            <a class="active" href="#">
+                <i class="fa-solid fa-house"></i> Dashboard
+            </a>
+
+            <a href="missions.html" class="nav-item">
+                <i class="fa-solid fa-bullseye"></i>
+                <span>Missions</span>
+            </a>
+
+            <a href="leader.html" class="nav-item">
+                <i class="fa-solid fa-trophy"></i>
+                <span>Leaderboard</span>
+            </a>
+
+            <a href="#badges">
+                <i class="fa-solid fa-medal"></i> Badges
+            </a>
+
+            <a href="activities.html">
+                <i class="fa-solid fa-leaf"></i> Activities
+            </a>
+
+            <a href="reward.html">
+                <i class="fa-solid fa-gift"></i> Rewards
+            </a>
+        </nav>
+
+        <div class="sidebar-bottom">
+            <div class="eco-tip">
+                <i class="fa-solid fa-lightbulb"></i>
+                <strong>Eco Tip</strong>
+                <p>Switch off lights when leaving a classroom.</p>
+            </div>
+
+            <button class="logout">
+                <i class="fa-solid fa-right-from-bracket"></i>
+                Logout
+            </button>
+        </div>
+
+    </aside>
+
+
+    <!-- MAIN CONTENT -->
+    <main class="main">
+
+        <!-- TOPBAR -->
+        <header class="topbar">
+
+            <button class="menu-btn" onclick="toggleSidebar()">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+
+            <div class="search">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input type="text" placeholder="Search missions, activities...">
+            </div>
+
+            <div class="top-actions">
+
+                <button class="notification">
+                    <i class="fa-regular fa-bell"></i>
+                    <span>3</span>
+                </button>
+
+                <div class="profile">
+                    <div class="avatar" id="userAvatar">--</div>
+
+                    <div>
+                        <strong id="userName">Loading...</strong>
+                        <small id="userLevel">Eco Explorer</small>
+                    </div>
+
+                    <i class="fa-solid fa-chevron-down"></i>
+                </div>
+
+            </div>
+
+        </header>
+
+
+        <!-- WELCOME -->
+        <section class="welcome">
+
+            <div>
+                <p class="small-title">WELCOME BACK 👋</p>
+
+                <h1>
+                    Make an impact,
+                    <span>one challenge at a time.</span>
+                </h1>
+
+                <p class="welcome-text">
+                    Complete environmental challenges, earn EcoPoints,
+                    unlock badges and compete with your campus.
+                </p>
+
+                <a class="primary-btn" href="missions.html">
+                    Explore Missions
+                    <i class="fa-solid fa-arrow-right"></i>
+                </a>
+            </div>
+
+            <div class="welcome-art">
+                <div class="planet">🌍</div>
+                <div class="floating-leaf leaf1">🍃</div>
+                <div class="floating-leaf leaf2">🌿</div>
+                <div class="floating-leaf leaf3">🌱</div>
+            </div>
+
+        </section>
+
+
+        <!-- STATS -->
+        <section class="stats">
+
+            <div class="stat-card">
+                <div class="stat-icon green">
+                    <i class="fa-solid fa-star"></i>
+                </div>
+                <div>
+                    <p>EcoPoints</p>
+                    <h2 id="points">0</h2>
+                    <small id="weeklyPoints">+0 this week</small>
+                </div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-icon orange">
+                    <i class="fa-solid fa-fire"></i>
+                </div>
+                <div>
+                    <p>Day Streak</p>
+                    <h2 id="streak">0 🔥</h2>
+                    <small id="streakMessage">Keep it going!</small>
+                </div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-icon blue">
+                    <i class="fa-solid fa-trophy"></i>
+                </div>
+                <div>
+                    <p>Rank</p>
+                    <section class="my-rank" id="myRank" aria-live="polite">
+                        <div class="my-rank-loading">Loading your rank…</div>
+                    </section>
+                </div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-icon purple">
+                    <i class="fa-solid fa-medal"></i>
+                </div>
+                <div>
+                    <p>Badges</p>
+                    <h2 id="badgeCount">0</h2>
+                    <small id="newBadges">0 new this month</small>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- CONTENT GRID -->
+        <section class="dashboard-grid">
+
+            <!-- RIGHT COLUMN -->
+            <div class="right-column">
+
+                <!-- LEVEL -->
+                <div class="level-card">
+
+                    <div class="level-header">
+                        <div>
+                            <p>YOUR LEVEL</p>
+                            <h2 id="levelNumber">Level 1</h2>
+                        </div>
+
+                        <div class="level-circle">🌱</div>
+                    </div>
+
+                    <div class="level-progress">
+
+                        <div class="level-progress-top">
+                            <span id="levelTitle">Eco Explorer</span>
+                            <strong id="levelXp">0 / 500 XP</strong>
+                        </div>
+
+                        <div class="progress">
+                            <div id="levelProgressBar" style="width:0%"></div>
+                        </div>
+
+                    </div>
+
+                    <p class="next-level" id="nextLevel">
+                        500 XP until <strong>Green Champion</strong> 🚀
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- BADGES -->
+        <section class="badges-section" id="badges">
+
+            <div class="section-heading">
+
+                <div>
+                    <p class="section-label">ACHIEVEMENTS</p>
+                    <h2>Recent Badges 🥇</h2>
+                </div>
+
+                <button class="view-btn">
+                    View all
+                </button>
+
+            </div>
+
+
+            <div class="badges">
+
+                <div class="badge-card locked">
+                    <div class="badge-icon">♻️</div>
+                    <h3>Recycler</h3>
+                    <p>Locked</p>
+                </div>
+
+                <div class="badge-card locked">
+                    <div class="badge-icon">🌳</div>
+                    <h3>Tree Lover</h3>
+                    <p>Locked</p>
+                </div>
+
+                <div class="badge-card locked">
+                    <div class="badge-icon">💧</div>
+                    <h3>Water Saver</h3>
+                    <p>Locked</p>
+                </div>
+
+                <div class="badge-card locked">
+                    <div class="badge-icon">🔒</div>
+                    <h3>Green Champion</h3>
+                    <p>Locked</p>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- REWARDS -->
+
+
+
+        <!-- ACTIVITIES -->
+
+
+        <!-- FOOTER -->
+        <footer>
+
+            <div>
+                <strong>🌱 EcoQuest</strong>
+                <p>Making sustainability fun for the next generation.</p>
+            </div>
+
+            <p>© 2026 EcoQuest. All rights reserved.</p>
+
+        </footer>
+
+    </main>
+
+
+    <script type="module" src="script.js"></script>
+    <script type="module" src="leaderboard.js"></script>
+</body>
+
+</html>

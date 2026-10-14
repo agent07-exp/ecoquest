@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>EcoQuest | Leaderboard</title>
+
+    <!-- Shared base styles (variables, reset, sidebar, layout) -->
+    <link rel="stylesheet" href="style.css">
+    <!-- Leaderboard page styles -->
+    <link rel="stylesheet" href="leader.css">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+
+<body>
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+
+        <div class="logo">
+            <div class="logo-icon">🌱</div>
+            <div>
+                <h2>EcoQuest</h2>
+                <span>Learn • Play • Protect</span>
+            </div>
+        </div>
+
+        <nav>
+            <a href="index.html">
+                <i class="fa-solid fa-house"></i> Dashboard
+            </a>
+
+            <a href="missions.html">
+                <i class="fa-solid fa-bullseye"></i> Missions
+            </a>
+
+            <a class="active" href="leader.html">
+                <i class="fa-solid fa-ranking-star"></i> Leaderboard
+            </a>
+
+            <a href="index.html#badges">
+                <i class="fa-solid fa-medal"></i> Badges
+            </a>
+
+            <a href="activities.html">
+                <i class="fa-solid fa-leaf"></i> Activities
+            </a>
+
+            <a href="reward.html">
+                <i class="fa-solid fa-gift"></i> Rewards
+            </a>
+        </nav>
+
+        <div class="sidebar-bottom">
+            <div class="eco-tip">
+                <i class="fa-solid fa-lightbulb"></i>
+                <strong>Eco Tip</strong>
+                <p>Switch off lights when leaving a classroom.</p>
+            </div>
+
+            <button class="logout">
+                <i class="fa-solid fa-right-from-bracket"></i>
+                Logout
+            </button>
+        </div>
+
+    </aside>
+
+
+    <!-- MAIN CONTENT -->
+    <main class="main-content">
+
+        <button class="mobile-menu-btn" onclick="toggleSidebar()" aria-label="Open menu">
+            <i class="fa-solid fa-bars"></i>
+        </button>
+
+        <header class="page-header">
+            <div>
+                <p class="page-label">ECOQUEST</p>
+                <h1>Leaderboard</h1>
+                <p class="page-subtitle">
+                    Players ranked by total XP earned from completed missions.
+                </p>
+            </div>
+
+            <div class="leaderboard-season">
+                <i class="fa-solid fa-leaf"></i>
+                <span>All time</span>
+            </div>
+        </header>
+
+
+        <!-- YOUR POSITION (filled by leaderboard.js) -->
+        <section class="my-rank" id="myRank" aria-live="polite">
+            <div class="my-rank-loading">Loading your rank…</div>
+        </section>
+
+
+        <!-- TOP 3 -->
+        <section class="top-three" id="podium" aria-label="Top three players"></section>
+
+
+        <!-- RANKINGS -->
+        <section class="leaderboard-section">
+
+            <div class="section-heading">
+                <div>
+                    <h2>Rankings</h2>
+                    <p id="rankingSummary">Top players</p>
+                </div>
+            </div>
+
+            <div class="leaderboard-table" id="leaderboardTable">
+
+                <div class="leaderboard-row table-header">
+                    <span>Rank</span>
+                    <span>Player</span>
+                    <span>Missions</span>
+                    <span>XP</span>
+                </div>
+
+                <div id="leaderboardRows"></div>
+
+            </div>
+
+            <p class="rank-note">
+                <i class="fa-solid fa-circle-info"></i>
+                Spending points on rewards never lowers your rank, because ranking uses
+                the XP you have earned, not your current balance.
+            </p>
+
+        </section>
+
+    </main>
+
+    <script type="module" src="script.js"></script>
+    <script type="module" src="leaderboard.js"></script>
+
+</body>
+
+</html>

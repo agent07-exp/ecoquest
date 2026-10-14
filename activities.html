@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EcoQuest | Activities</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="activities.css">
+</head>
+
+<body>
+    <aside class="sidebar">
+        <div class="logo">
+            <div class="logo-icon">🌱</div>
+            <div>
+                <h2>EcoQuest</h2><span>Learn • Play • Protect</span>
+            </div>
+        </div>
+        <nav>
+            <a href="index.html"><i class="fa-solid fa-house"></i> Dashboard</a>
+            <a href="missions.html"><i class="fa-solid fa-bullseye"></i> Missions</a>
+            <a href="leader.html"><i class="fa-solid fa-ranking-star"></i> Leaderboard</a>
+            <a href="index.html#badges"><i class="fa-solid fa-medal"></i> Badges</a>
+            <a class="active" href="activities.html"><i class="fa-solid fa-leaf"></i> Activities</a>
+            <a href="reward.html"><i class="fa-solid fa-gift"></i> Rewards</a>
+        </nav>
+        <div class="sidebar-bottom">
+            <div class="eco-tip"><i class="fa-solid fa-lightbulb"></i><strong>Eco Tip</strong>
+                <p>Switch off lights when leaving a classroom.</p>
+            </div>
+            <button class="logout"><i class="fa-solid fa-right-from-bracket"></i> Logout</button>
+        </div>
+    </aside>
+
+    <main class="main">
+        <header class="topbar">
+            <button class="menu-btn" onclick="toggleSidebar()"><i class="fa-solid fa-bars"></i></button>
+            <div class="search"><i class="fa-solid fa-magnifying-glass"></i><input type="text" id="activitySearch"
+                    placeholder="Search activities..."></div>
+            <div class="top-actions">
+                <button class="notification"><i class="fa-regular fa-bell"></i><span>3</span></button>
+                <div class="profile">
+                    <div class="avatar" id="userAvatar">--</div>
+                    <div><strong id="userName">Loading...</strong><small id="userLevel">Eco Explorer</small></div>
+                    <i class="fa-solid fa-chevron-down"></i>
+                </div>
+            </div>
+        </header>
+
+        <section class="page-hero">
+            <div>
+                <p class="small-title">YOUR JOURNEY</p>
+                <h1>Activity History</h1>
+                <p class="welcome-text">Every mission, reward and level-up, in one place.</p>
+            </div>
+            <div class="mission-hero-icon">🌿</div>
+        </section>
+
+        <!-- SUMMARY -->
+        <section class="activity-stats" aria-label="Activity summary">
+            <div class="activity-stat">
+                <i class="fa-solid fa-list-check"></i>
+                <div>
+                    <strong id="statTotal">0</strong>
+                    <small>Total activities</small>
+                </div>
+            </div>
+            <div class="activity-stat">
+                <i class="fa-solid fa-circle-check"></i>
+                <div>
+                    <strong id="statMissions">0</strong>
+                    <small>Missions completed</small>
+                </div>
+            </div>
+            <div class="activity-stat">
+                <i class="fa-solid fa-star"></i>
+                <div>
+                    <strong id="statXP">0</strong>
+                    <small>XP from missions</small>
+                </div>
+            </div>
+            <div class="activity-stat">
+                <i class="fa-solid fa-calendar-week"></i>
+                <div>
+                    <strong id="statWeek">0</strong>
+                    <small>This week</small>
+                </div>
+            </div>
+        </section>
+
+        <!-- FEED -->
+        <section class="activity-page" id="activities">
+            <div class="section-heading">
+                <div>
+                    <p class="section-label">TIMELINE</p>
+                    <h2>Recent activity</h2>
+                </div>
+            </div>
+
+            <div class="activity-filters" id="activityFilters" role="tablist" aria-label="Filter activities">
+                <button type="button" class="chip active" data-filter="all" role="tab" aria-selected="true">All</button>
+                <button type="button" class="chip" data-filter="mission" role="tab" aria-selected="false">
+                    <i class="fa-solid fa-bullseye"></i> Missions</button>
+                <button type="button" class="chip" data-filter="reward" role="tab" aria-selected="false">
+                    <i class="fa-solid fa-gift"></i> Rewards</button>
+                <button type="button" class="chip" data-filter="level" role="tab" aria-selected="false">
+                    <i class="fa-solid fa-arrow-up"></i> Level ups</button>
+            </div>
+
+            <div class="activity-feed" id="activityFeed" aria-live="polite">
+                <div class="activity-loading">Loading your activity…</div>
+            </div>
+        </section>
+    </main>
+
+    <script type="module" src="script.js"></script>
+    <script type="module" src="activities.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,288 @@
+/* =========================================================
+   ECOQUEST - ACTIVITIES PAGE
+   Uses the shared shell from style.css (sidebar, topbar, hero)
+   ========================================================= */
+
+/* ---------- Summary tiles ---------- */
+
+.activity-stats {
+    margin-top: 24px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+}
+
+.activity-stat {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 18px 20px;
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    box-shadow: var(--shadow);
+}
+
+.activity-stat>i {
+    width: 44px;
+    height: 44px;
+    flex-shrink: 0;
+    display: grid;
+    place-items: center;
+    border-radius: 13px;
+    background: var(--light-green);
+    color: var(--green);
+    font-size: 18px;
+}
+
+.activity-stat strong {
+    display: block;
+    font-size: 22px;
+    line-height: 1.1;
+    color: var(--text);
+}
+
+.activity-stat small {
+    color: var(--muted);
+    font-size: 12px;
+}
+
+/* ---------- Filters ---------- */
+
+.activity-page {
+    margin-top: 32px;
+    padding-bottom: 50px;
+}
+
+.activity-filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 20px;
+}
+
+.activity-filters .chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding: 9px 16px;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    background: var(--white);
+    color: var(--muted);
+    font: inherit;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background .2s, color .2s, border-color .2s;
+}
+
+.activity-filters .chip:hover {
+    border-color: var(--green);
+    color: var(--dark-green);
+}
+
+.activity-filters .chip.active {
+    background: var(--green);
+    border-color: var(--green);
+    color: #fff;
+}
+
+.activity-filters .chip:focus-visible {
+    outline: 3px solid rgba(22, 163, 74, .3);
+    outline-offset: 2px;
+}
+
+/* ---------- Feed ---------- */
+
+.activity-day {
+    margin: 26px 0 10px;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    color: #9aa59e;
+}
+
+.activity-day:first-child {
+    margin-top: 0;
+}
+
+.activity-group {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    overflow: hidden;
+}
+
+.activity-row {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 16px 20px;
+    border-bottom: 1px solid var(--border);
+    transition: background .2s;
+}
+
+.activity-row:last-child {
+    border-bottom: none;
+}
+
+.activity-row:hover {
+    background: #f8fbf9;
+}
+
+.activity-badge {
+    width: 46px;
+    height: 46px;
+    flex-shrink: 0;
+    display: grid;
+    place-items: center;
+    border-radius: 14px;
+    font-size: 18px;
+    background: var(--light-green);
+    color: var(--green);
+}
+
+.activity-row[data-type="reward"] .activity-badge {
+    background: #fff4e0;
+    color: #d98200;
+}
+
+.activity-row[data-type="level"] .activity-badge {
+    background: #eaf1ff;
+    color: #3b6fe0;
+}
+
+.activity-row[data-type="other"] .activity-badge {
+    background: #f0f3f1;
+    color: #6b7a71;
+}
+
+.activity-info {
+    flex: 1;
+    min-width: 0;
+}
+
+.activity-info h3 {
+    margin: 0 0 3px;
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--text);
+    overflow-wrap: anywhere;
+}
+
+.activity-info p {
+    margin: 0;
+    font-size: 13px;
+    color: var(--muted);
+}
+
+.activity-side {
+    text-align: right;
+    flex-shrink: 0;
+}
+
+.activity-amount {
+    display: block;
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--green);
+    margin-bottom: 3px;
+}
+
+.activity-amount.spent {
+    color: #d98200;
+}
+
+.activity-amount.pending {
+    color: var(--muted);
+    font-weight: 600;
+}
+
+.activity-time {
+    font-size: 12px;
+    color: #9aa59e;
+}
+
+/* ---------- Empty / loading ---------- */
+
+.activity-loading,
+.activity-empty {
+    text-align: center;
+    padding: 56px 20px;
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    color: var(--muted);
+    font-size: 14px;
+}
+
+.activity-empty i {
+    display: block;
+    font-size: 38px;
+    color: #b9c8bf;
+    margin-bottom: 14px;
+}
+
+.activity-empty h3 {
+    margin: 0 0 6px;
+    color: var(--text);
+    font-size: 17px;
+}
+
+.activity-empty a {
+    display: inline-block;
+    margin-top: 16px;
+    padding: 11px 20px;
+    border-radius: 12px;
+    background: var(--green);
+    color: #fff;
+    font-weight: 600;
+    font-size: 14px;
+    text-decoration: none;
+}
+
+/* ---------- Responsive ---------- */
+
+@media (max-width: 900px) {
+    .activity-stats {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 500px) {
+    .activity-stats {
+        gap: 10px;
+    }
+
+    .activity-stat {
+        padding: 14px;
+        gap: 10px;
+    }
+
+    .activity-stat>i {
+        width: 38px;
+        height: 38px;
+        font-size: 15px;
+    }
+
+    .activity-stat strong {
+        font-size: 19px;
+    }
+
+    .activity-row {
+        padding: 14px;
+        gap: 12px;
+    }
+
+    .activity-badge {
+        width: 40px;
+        height: 40px;
+        font-size: 16px;
+    }
+
+    .activity-info h3 {
+        font-size: 14px;
+    }
+}

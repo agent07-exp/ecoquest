@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>EcoQuest | Rewards</title>
+
+    <!-- Shared base styles (variables, reset, sidebar, layout) -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <!-- Rewards page styles (kept inline so this page never depends on a
+         second stylesheet loading correctly) -->
+    <style>
+        .main-content {
+            margin-left: 255px;
+            min-height: 100vh;
+            padding: 35px;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            border: 1px solid var(--border);
+            background: white;
+            width: 42px;
+            height: 42px;
+            border-radius: 10px;
+            font-size: 17px;
+            color: var(--text);
+            cursor: pointer;
+            margin-bottom: 18px;
+        }
+
+        /* PAGE HEADER */
+        .page-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+
+        .page-label {
+            color: var(--green);
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            margin-bottom: 7px;
+        }
+
+        .page-header h1 {
+            font-size: 30px;
+            margin: 0;
+        }
+
+        .page-subtitle {
+            color: var(--muted);
+            margin-top: 8px;
+        }
+
+        .page-header .rewards-balance {
+            font-size: 15px;
+            font-weight: 700;
+            white-space: nowrap;
+        }
+
+        /* REWARDS GRID WRAPPER */
+        .rewards-section-page {
+            margin-bottom: 35px;
+        }
+
+        /* HOW IT WORKS */
+        .how-it-works {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .how-card {
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 17px;
+            padding: 24px;
+            box-shadow: var(--shadow);
+        }
+
+        .how-icon {
+            width: 46px;
+            height: 46px;
+            border-radius: 13px;
+            background: var(--light-green);
+            color: var(--green);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 19px;
+            margin-bottom: 14px;
+        }
+
+        .how-card h3 {
+            font-size: 15px;
+            margin-bottom: 6px;
+        }
+
+        .how-card p {
+            color: var(--muted);
+            font-size: 13px;
+            line-height: 1.5;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 1100px) {
+            .rewards-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .how-it-works {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 800px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .main-content {
+                margin-left: 0;
+                padding: 20px 18px;
+            }
+
+            .page-header {
+                align-items: flex-start;
+                gap: 16px;
+                flex-direction: column;
+            }
+        }
+
+        @media (max-width: 550px) {
+            .rewards-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+
+        <div class="logo">
+            <div class="logo-icon">🌱</div>
+            <div>
+                <h2>EcoQuest</h2>
+                <span>Learn • Play • Protect</span>
+            </div>
+        </div>
+
+        <nav>
+            <a href="index.html">
+                <i class="fa-solid fa-house"></i> Dashboard
+            </a>
+
+            <a href="index.html#missions">
+                <i class="fa-solid fa-bullseye"></i> Missions
+            </a>
+
+            <a href="leader.html">
+                <i class="fa-solid fa-ranking-star"></i> Leaderboard
+            </a>
+
+            <a href="index.html#badges">
+                <i class="fa-solid fa-medal"></i> Badges
+            </a>
+
+            <a href="activities.html">
+                <i class="fa-solid fa-leaf"></i> Activities
+            </a>
+
+            <a class="active" href="rewards.html">
+                <i class="fa-solid fa-gift"></i> Rewards
+            </a>
+        </nav>
+
+        <div class="sidebar-bottom">
+            <div class="eco-tip">
+                <i class="fa-solid fa-lightbulb"></i>
+                <strong>Eco Tip</strong>
+                <p>Switch off lights when leaving a classroom.</p>
+            </div>
+
+            <button class="logout">
+                <i class="fa-solid fa-right-from-bracket"></i>
+                Logout
+            </button>
+        </div>
+
+    </aside>
+
+
+    <!-- MAIN CONTENT -->
+    <main class="main-content">
+
+        <button class="mobile-menu-btn" onclick="toggleSidebar()">
+            <i class="fa-solid fa-bars"></i>
+        </button>
+
+        <header class="page-header">
+
+            <div>
+                <p class="page-label">ECOQUEST</p>
+                <h1>Rewards</h1>
+                <p class="page-subtitle">
+                    Turn your EcoPoints into real perks.
+                </p>
+            </div>
+
+            <span class="rewards-balance">
+                <i class="fa-solid fa-star"></i>
+                <strong id="rewards-points">0</strong> EcoPoints
+            </span>
+
+        </header>
+
+
+        <!-- REWARDS GRID -->
+        <section class="rewards-section-page">
+            <div class="rewards-grid" id="rewards-grid"></div>
+        </section>
+
+
+        <!-- HOW IT WORKS -->
+        <section class="how-it-works">
+
+            <div class="how-card">
+                <div class="how-icon"><i class="fa-solid fa-bullseye"></i></div>
+                <h3>1. Complete missions</h3>
+                <p>Finish eco missions on the dashboard to earn EcoPoints.</p>
+            </div>
+
+            <div class="how-card">
+                <div class="how-icon"><i class="fa-solid fa-gift"></i></div>
+                <h3>2. Pick a reward</h3>
+                <p>Choose anything you can afford from the list above.</p>
+            </div>
+
+            <div class="how-card">
+                <div class="how-icon"><i class="fa-solid fa-circle-check"></i></div>
+                <h3>3. Redeem it</h3>
+                <p>Your points are deducted instantly and the reward is yours.</p>
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <script src="script.js"></script>
+    <script src="rewards.js"></script>
+    <script>
+        /* =========================
+   EcoQuest - script.js
+   Works with index.html + style.css as-is
+========================= */
+
+        const STORAGE_KEY = "ecoquest-state-v1";
+
+        /* ---------- State ---------- */
+        const defaultState = {
+            points: 2450,
+            weekly: 180,
+            level: 12,
+            levelMax: 3000,
+            missions: {}, // { "Mission Title": progress }
+            seenNotifications: false,
+        };
+
+        let state = loadState();
+
+        function loadState() {
+            try {
+                const saved = JSON.parse(localStorage.getItem(STORAGE_KEY));
+                return saved ? { ...defaultState, ...saved } : { ...defaultState };
+            } catch {
+                return { ...defaultState };
+            }
+        }
+
+        function saveState() {
+            try {
+                localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+            } catch {
+                /* storage blocked - ignore */
+            }
+        }
+
+        /* ---------- Helpers ---------- */
+        const fmt = (n) => n.toLocaleString("en-US");
+        const $ = (sel, root = document) => root.querySelector(sel);
+        const $$ = (sel, root = document) => [...root.querySelectorAll(sel)];
+
+        /* ---------- Toast (styles injected so style.css stays untouched) ---------- */
+        const toastStyle = document.createElement("style");
+        toastStyle.textContent = `
+.eq-toast {
+    position: fixed; right: 24px; bottom: 24px; z-index: 999;
+    background: #1f2a24; color: #fff; padding: 14px 20px;
+    border-radius: 14px; font-size: 14px; font-weight: 500;
+    box-shadow: 0 10px 30px rgba(0,0,0,.2);
+    opacity: 0; transform: translateY(12px);
+    transition: opacity .3s, transform .3s; pointer-events: none;
+}
+.eq-toast.show { opacity: 1; transform: translateY(0); }
+.mission-card.done { opacity: .75; }
+.continue-btn:disabled { cursor: default; opacity: .7; }
+`;
+        document.head.appendChild(toastStyle);
+
+        let toastTimer;
+        function showToast(message) {
+            let toast = $(".eq-toast");
+            if (!toast) {
+                toast = document.createElement("div");
+                toast.className = "eq-toast";
+                document.body.appendChild(toast);
+            }
+            toast.textContent = message;
+            // force reflow so the transition replays on rapid clicks
+            void toast.offsetWidth;
+            toast.classList.add("show");
+            clearTimeout(toastTimer);
+            toastTimer = setTimeout(() => toast.classList.remove("show"), 2600);
+        }
+
+        /* ---------- Sidebar (called from index.html) ---------- */
+        function toggleSidebar() {
+            $(".sidebar").classList.toggle("open");
+        }
+
+        // close sidebar on mobile after tapping a nav link or clicking outside
+        document.addEventListener("click", (e) => {
+            const sidebar = $(".sidebar");
+            if (!sidebar.classList.contains("open")) return;
+            const clickedLink = e.target.closest(".sidebar nav a");
+            const clickedInside = e.target.closest(".sidebar");
+            const clickedMenuBtn = e.target.closest(".menu-btn");
+            if (clickedLink || (!clickedInside && !clickedMenuBtn)) {
+                sidebar.classList.remove("open");
+            }
+        });
+
+        /* ---------- Nav highlight ---------- */
+        $$(".sidebar nav a").forEach((link) => {
+            link.addEventListener("click", () => {
+                $$(".sidebar nav a").forEach((a) => a.classList.remove("active"));
+                link.classList.add("active");
+            });
+        });
+
+        /* ---------- Scroll to missions (called from index.html) ---------- */
+        function scrollToMissions() {
+            $("#missions").scrollIntoView({ behavior: "smooth", block: "start" });
+        }
+
+        /* ---------- Points, level & leaderboard UI ---------- */
+        /* Every lookup here is null-checked, since not every page (e.g.
+           rewards.html) has the dashboard's stat card, level card, etc. */
+        function renderStats() {
+            // stat card
+            const pointsEl = $("#points");
+            if (pointsEl) {
+                pointsEl.textContent = fmt(state.points);
+                const weekly = pointsEl.parentElement.querySelector("small");
+                if (weekly) weekly.textContent = `+${fmt(state.weekly)} this week`;
+            }
+
+            // level card
+            const levelHeading = $(".level-header h2");
+            if (levelHeading) levelHeading.textContent = `Level ${state.level}`;
+
+            const levelTop = $(".level-progress-top strong");
+            if (levelTop) {
+                levelTop.textContent = `${fmt(state.points)} / ${fmt(state.levelMax)} XP`;
+            }
+
+            const levelBar = $(".level-progress .progress div");
+            if (levelBar) {
+                const pct = Math.min(100, (state.points / state.levelMax) * 100);
+                levelBar.style.width = pct + "%";
+            }
+
+            const next = $(".next-level");
+            if (next) {
+                const remaining = Math.max(0, state.levelMax - state.points);
+                next.innerHTML = `${fmt(remaining)} XP until <strong>Green Champion</strong> 🚀`;
+            }
+
+            // leaderboard "You" row
+            const you = $(".leader.current .leader-points");
+            if (you) you.textContent = fmt(state.points);
+
+            // rewards balance (defined in rewards.js, present on index.html and rewards.html)
+            if (typeof renderRewards === "function") renderRewards();
+        }
+
+        function addPoints(xp) {
+            state.points += xp;
+            state.weekly += xp;
+
+            // level up
+            while (state.points >= state.levelMax) {
+                state.level += 1;
+                state.levelMax += 500;
+                showToast(`🎉 Level up! You're now Level ${state.level}`);
+            }
+
+            renderStats();
+            saveState();
+        }
+
+        /* ---------- Activity feed ---------- */
+        function addActivity(title, subtitle, icon = "🌱") {
+            const list = $(".activity-list");
+            if (!list) return;
+
+            const item = document.createElement("div");
+            item.className = "activity";
+            item.innerHTML = `
+        <div class="activity-icon">${icon}</div>
+        <div>
+            <strong></strong>
+            <p></p>
+        </div>
+        <span>Just now</span>
+    `;
+            $("strong", item).textContent = title;
+            $("p", item).textContent = subtitle;
+
+            list.prepend(item);
+
+            // keep the feed short
+            while (list.children.length > 6) list.lastElementChild.remove();
+        }
+
+        /* ---------- Notifications ---------- */
+        const bell = $(".notification");
+        if (bell) {
+            const badge = $("span", bell);
+            if (state.seenNotifications && badge) badge.style.display = "none";
+
+            bell.addEventListener("click", () => {
+                if (badge) badge.style.display = "none";
+                state.seenNotifications = true;
+                saveState();
+                showToast("🔔 You're all caught up!");
+            });
+        }
+
+        /* ---------- Logout ---------- */
+        const logout = $(".logout");
+        if (logout) {
+            logout.addEventListener("click", () => {
+                if (confirm("Log out of EcoQuest?")) {
+                    showToast("Logged out (demo)");
+                }
+            });
+        }
+
+        /* ---------- Eco tips rotator ---------- */
+        const tips = [
+            "Switch off lights when leaving a classroom.",
+            "Carry a reusable water bottle to campus.",
+            "Print double-sided to save paper.",
+            "Segregate dry and wet waste before disposal.",
+            "Take the stairs or cycle for short distances.",
+        ];
+        const tipText = $(".eco-tip p");
+        if (tipText) {
+            let i = 0;
+            setInterval(() => {
+                i = (i + 1) % tips.length;
+                tipText.textContent = tips[i];
+            }, 8000);
+        }
+
+        /* ---------- Init ---------- */
+        function init() {
+            renderStats();
+        }
+
+        init();
+    </script>
+
+</body>
+
+</html>
